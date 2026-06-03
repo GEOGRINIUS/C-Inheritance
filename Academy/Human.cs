@@ -1,4 +1,5 @@
-﻿using System;
+﻿//#define DEBUG
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,17 +17,23 @@ namespace Academy
             LastName = lastName;
             FirstName = firstName;
             Age = age;
-            Console.WriteLine($"HConstructor:{GetHashCode()}");
+#if DEBUG
+            Console.WriteLine($"HConstructor:{GetHashCode()}"); 
+#endif
         }
         ~Human()
         {
-            Console.WriteLine($"HDestructor:\t{GetHashCode()}");
+#if DEBUG
+            Console.WriteLine($"HDestructor:\t{GetHashCode()}"); 
+#endif
         }
 
         //                              Methods:
         public void Info()
         {
-            Console.WriteLine($"{LastName} {FirstName} {Age}");
+#if DEBUG
+            Console.WriteLine($"{LastName} {FirstName} {Age}"); 
+#endif
         }
 
         public override string ToString()

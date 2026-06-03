@@ -1,4 +1,5 @@
-﻿using System;
+﻿//#define DEBUG
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,11 +21,15 @@ namespace Academy
             Group = group;
             Rating = rating;
             Attendance = attendance;
-            Console.WriteLine($"SConstructor:\t{GetHashCode()}");
+#if DEBUG
+            Console.WriteLine($"SConstructor:\t{GetHashCode()}"); 
+#endif
         }
         ~Student()
         {
-            Console.WriteLine($"SDestructor:\t{GetHashCode()}");
+#if DEBUG
+            Console.WriteLine($"SDestructor:\t{GetHashCode()}"); 
+#endif
         }
 
         public override string ToString()
