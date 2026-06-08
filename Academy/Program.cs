@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.IO;
+using System.Diagnostics;
+using System.Windows.Forms;
+
 namespace Academy
 {
     class Program
@@ -58,6 +62,17 @@ namespace Academy
             {
                 Console.WriteLine(group[i]);
             }
+
+            Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..");
+            Console.WriteLine(Directory.GetCurrentDirectory());
+            string filename = "Group.csv";
+            StreamWriter writer = new StreamWriter(filename);
+            foreach(Human h in group)
+            {
+                writer.WriteLine(h.ToFileSrting()+";");
+            }
+            writer.Close();
+            Process.Start("notepad", filename);//csv -- Comma-Separated Values (Значение, разделёно запятыми.)
         }
     }
 }
