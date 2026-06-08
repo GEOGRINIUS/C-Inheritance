@@ -1,4 +1,7 @@
-﻿using System;
+﻿//#define INHERITANCE_PART_1
+#define INHERITANCE_PART_2
+#define INHERITANCE_PART_3
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +13,7 @@ namespace Academy
     {
         static void Main(string[] args)
         {
+#if INHERITANCE_PART_1
             Human human = new Human("Henriksson", "Martin", 35);
             human.Info();
             Console.WriteLine(human);
@@ -27,6 +31,22 @@ namespace Academy
                 "Chemistry", 25
                 );
             Console.WriteLine(teacher);
+
+            Graduate graduate = new Graduate("Rosenberg", "Ken", 35, "Law", "Vice", 32, 25, "How to make money");
+            Console.WriteLine(graduate);
+#endif
+
+#if INHERITANCE_PART_2
+            Human human = new Human("Vercetty", "Tommy", 30);
+            Console.WriteLine(human);
+
+            Student student = new Student(human, "Auto", "Vice", 95, 98);
+            Console.WriteLine(student);
+
+            Graduate graduate = new Graduate(student, "How to make money");
+            Console.WriteLine(graduate);
+#endif
+
         }
     }
 }

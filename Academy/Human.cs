@@ -21,6 +21,12 @@ namespace Academy
             Console.WriteLine($"HConstructor:{GetHashCode()}"); 
 #endif
         }
+        public Human(Human other)
+        {
+            this.LastName = other.LastName;
+            this.FirstName = other.FirstName;
+            this.Age = other.Age;
+        }
         ~Human()
         {
 #if DEBUG
