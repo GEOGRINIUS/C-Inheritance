@@ -30,7 +30,7 @@ namespace Academy
 
         public override string ToString()
         {
-            return base.ToString() + $" {Experience}";
+            return base.ToString() + $"{Experience.ToString().PadLeft(3).PadRight(4)}";
         }
 
     }

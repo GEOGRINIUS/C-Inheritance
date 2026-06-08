@@ -45,7 +45,7 @@ namespace Academy
         public override string ToString()
         {
             //return base.ToString();
-            return $"{LastName} {FirstName} {Age}";
+            return $"{LastName.PadRight(12)} {FirstName.PadRight(12)} {Age.ToString().PadLeft(2).PadRight(3)}"; 
         }
 
 
