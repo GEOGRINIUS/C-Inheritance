@@ -1,6 +1,6 @@
 ﻿//#define INHERITANCE_PART_1
 //#define INHERITANCE_PART_2
-#define INHERITANCE_PART_3
+#define WRITE_TO_FILE
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,29 +50,42 @@ namespace Academy
             Graduate graduate = new Graduate(student, "How to make money");
             Console.WriteLine(graduate);
 #endif
-        //1) Upcast:
-        Human[] group = new Human[]
-            {
+
+#if WRITE_TO_FILE
+            //1) Upcast:
+            Human[] group = new Human[]
+                {
                 new Student("Vercatty", "Tommy", 30, "Auto", "Vice", 91, 98),
                 new Teacher("Diaz", "Ricardo", 45, "Weapons distribution", 20),
                 new Graduate("Rosendetg", "Ken", 35, "Law", "Vice", 32, 25, "How to make money"),
                 new Teacher("Colonel", "Cortez", 50, "Weapons distribution", 25)
-            };
-            for(int i=0; i<group.Length; i++)
+                };
+            Print(group);
+            Save(group, "Group.csv");
+             
+
+#endif
+        }
+        static void Print(Human[] group)
+        {
+            for (int i = 0; i < group.Length; i++)
             {
                 Console.WriteLine(group[i]);
             }
-
+        }
+        static void Save(Human[] group, string filename)
+        {
             Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..");
             Console.WriteLine(Directory.GetCurrentDirectory());
-            string filename = "Group.csv";
+            //string filename = "Group.csv";
             StreamWriter writer = new StreamWriter(filename);
-            foreach(Human h in group)
+            foreach (Human h in group)
             {
-                writer.WriteLine(h.ToFileSrting()+";");
+                writer.WriteLine(h.ToFileSrting() + ";");
             }
             writer.Close();
-            Process.Start("notepad", filename);//csv -- Comma-Separated Values (Значение, разделёно запятыми.)
+            Process.Start("notepad", filename);//csv -- Comma-Separated Values (Значение, разделёно запятыми.) 
+            
         }
     }
 }
