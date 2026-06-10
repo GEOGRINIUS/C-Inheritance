@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Academy
+{
+    static class Factory
+    {
+        public static Human Create(string type)
+        {
+            Human human = null;
+            switch (type)
+            {
+                case "Student": human = new Student("", "", 0, "", "", 0, 0); break;
+                case "Graduate": human = new Graduate("", "", 0, "", "", 0, 0, ""); break;
+                case "Teacher": human = new Teacher("", "", 0, "", 0); break;
+            }
+            return human;
+        }
+    }
+}
