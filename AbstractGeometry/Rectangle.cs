@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace AbstractGeometry
 {
-    class Rectangle: Shape
+    class Rectangle: Shape, IhaveDiagonal
     {
         public double Width { get; set; }
         public double Height { get; set; }
@@ -21,6 +21,10 @@ namespace AbstractGeometry
         {
             Width = width;
             Height = height;
+        }
+        public double GetDiagonal()
+        {
+            return Math.Sqrt(Width*Width+Height*Height);
         }
         public override double GetArea()
         {
@@ -36,10 +40,22 @@ namespace AbstractGeometry
             Pen pen = new Pen(Color, LineWidth);
             e.Graphics.DrawRectangle(pen, StartX, StartY, (float)Width, (float)Height);
         }
+        public void DrawDiagonal(PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color, 1);
+            e.Graphics.DrawLine
+                (
+                pen, StartX, StartY,
+                StartX + (float)Width, 
+                StartY + (float)Height
+                );
+        }
         public override void Info(PaintEventArgs e)
         {
             Console.WriteLine($"Ширина прямоугольника: {Width}");
             Console.WriteLine($"Высота прямоугольника: {Height}");
+            Console.WriteLine($"Диагональ: {GetDiagonal()}");
+            DrawDiagonal(e);
             base.Info(e);
         }
     }
