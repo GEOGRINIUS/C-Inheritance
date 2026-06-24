@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Circle.cs" />
+    <Compile Include="DegreeRotation.cs" />
     <Compile Include="IhaveDiagonal.cs" />
     <Compile Include="IHaveDiameter.cs" />
     <Compile Include="Program.cs" />

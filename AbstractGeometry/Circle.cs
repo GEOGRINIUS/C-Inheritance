@@ -37,21 +37,35 @@ namespace AbstractGeometry
             Pen pen = new Pen(Color, LineWidth);
             e.Graphics.DrawEllipse(pen, StartX, StartY, (float)Radius * 2, (float)Radius * 2);
         }
+        public void DrawRadius(PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color, 1);
+            e.Graphics.DrawLine
+                (
+                pen,
+                StartX + (int)Radius, StartY + (int)Radius,
+                StartX + (int)Radius + (int)(Radius * Math.Cos(210*Math.PI/180)), 
+                StartY + (int)Radius + (int)(Radius * Math.Sin(210*Math.PI/180))
+                );
+        }
         public void DrawDiameter(PaintEventArgs e)
         {
             Pen pen = new Pen(Color, 1);
             e.Graphics.DrawLine
                 (
-                pen, StartX,
-                StartY + (float)Radius,
-                StartX + (float)Radius * 2, 
-                StartY + (float)Radius
+                pen, 
+                StartX + (int)Radius + (int)(Radius   * Math.Sin(210*Math.PI/180)),
+                StartY + (int)Radius + (float)(Radius * Math.Cos(210*Math.PI/180)),
+
+                StartX + (int)Radius + (float)(Radius * Math.Cos(30*Math.PI/180)), 
+                StartY + (int)Radius + (float)(Radius * Math.Sin(30*Math.PI/180))
                 );
         }
         public override void Info(PaintEventArgs e)
         {
             Console.WriteLine($"Радиус: {Radius}");
             Console.WriteLine($"Диаметр: {GetDiameter()}");
+            DrawRadius(e);
             DrawDiameter(e);
             base.Info(e);
         }

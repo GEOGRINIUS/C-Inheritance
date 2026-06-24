@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Drawing.Design;
@@ -29,13 +28,13 @@ namespace AbstractGeometry
 
             ////////////////////////////////////////////////////////////////////////
 
-            Rectangle rectangle = new Rectangle(500, 320, 400, 200, 5, Color.Red);
-            rectangle.Info(e);
+            //Rectangle rectangle = new Rectangle(500, 320, 400, 200, 5, Color.Red);
+            //rectangle.Info(e);
 
             Square square = new Square(200, 500, 220, 3, Color.AliceBlue);
             square.Info(e);
 
-            Circle circle = new Circle(50, 700, 300, 3, Color.Yellow);
+            Circle circle = new Circle(100, 200, 250, 3, Color.Yellow);
             circle.Info(e);
         }
         [DllImport("Kernel32.dll")]
