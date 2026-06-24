@@ -9,11 +9,18 @@ using System.Runtime.InteropServices;
 using System.Drawing.Design;
 using System.Windows.Forms;
 using System.Threading;
+using System.Security.Cryptography;
+using System.Windows.Forms.VisualStyles;
 
 namespace AbstractGeometry
 {
     class Program
     {
+        struct Parameters
+        {
+            public Shape[] shapes;
+            public PaintEventArgs e;
+        }
         static bool finish = false;
         static void Main(string[] args)
         {
@@ -50,22 +57,18 @@ namespace AbstractGeometry
             };
 
             //Info(shapes, e);
-            Draw(shapes, e);
-            //Thread draw_thread = new Thread(Draw);
-            Console.Read();
+            Parameters parameters = new Parameters()
+            {
+                shapes = shapes,
+                e = new PaintEventArgs(graphics, window_rect)
+            };
+            //Draw(parameters);
+            Thread draw_thread = new Thread(new ParameterizedThreadStart(Draw));
+            draw_thread.Start(parameters);
+            Console.ReadKey();
             finish = true;
 
         }
-            static void Draw(Shape[] shapes, PaintEventArgs e)
-            {
-                while (!finish)
-                {
-                    for (int i = 0; i < shapes.Length; i++)
-                    {
-                        shapes[i].Draw(e);
-                    }
-                }
-            }
         [DllImport("Kernel32.dll")]
         public static extern IntPtr GetConsoleWindow();
         [DllImport("Kernel32.dll")]
@@ -75,6 +78,17 @@ namespace AbstractGeometry
             for (int i = 0; i < shapes.Length; i++)
             {
                 shapes[i].Info(e);
+            }
+        }
+        static void Draw(object obj)
+        {
+            Parameters parameters = (Parameters)obj;
+            while(!finish)
+            {
+                for(int i=0; i<parameters.shapes.Length; i++)
+                {
+                    parameters.shapes[i].Draw(parameters.e);
+                }
             }
         }
     }
