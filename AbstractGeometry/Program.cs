@@ -53,7 +53,8 @@ namespace AbstractGeometry
             {
                 new Rectangle(400, 200, 400, 200, 5, Color.Red),
                 new Square(200, 660, 60, 1, Color.AliceBlue),
-                new Circle(150, 75, 178, 3, Color.Yellow)
+                new Circle(150, 75, 178, 3, Color.Yellow),
+                new Triangle(100, 150, 120, 130, 420, 360, 3, Color.Purple)
             };
 
             //Info(shapes, e);

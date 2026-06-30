@@ -31,8 +31,16 @@
   <Class Name="AbstractGeometry.Circle" Collapsed="true">
     <Position X="5.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAAAAAAAgAAAAAAAAAAAAAAAAEAAAAAEAAAAAA=</HashCode>
+      <HashCode>AAAIAAAAAAAAAgAQAAAAAAAAYAAAAAEAAABAEFBAACA=</HashCode>
       <FileName>Circle.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AbstractGeometry.triangle" Collapsed="true">
+    <Position X="2.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>triangle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
